@@ -1,0 +1,17 @@
+<div class="card mb-3 d-flex align-items-center" style="max-width: 100%;padding:0 20px 0 0">
+  <a href="{% url 'article_detail' article.pk %}" class="text-dark" style="text-decoration: none">
+  <div class="row g-0">
+    <div class="col-md-4 d-flex align-items-center">
+      <img src="{{ article.get_photo }}" class="img-fluid rounded-start" alt="..." style="">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body" style="">
+
+        <h5 class="card-title">{{ article.title }}</h5>
+        <p class="card-text">{{ article.content|truncatechars:200 }}</p>
+        <p class="card-text"><small class="text-muted">{{ article.created_at }}</small></p>
+        <p class="card-text"><small class="text-muted">👀 {{ article.views }}</small></p>
+      </div>
+    </div>
+  </div>
+</div>

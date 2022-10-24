@@ -1,0 +1,10 @@
+{% if request.user.is_authenticated %}
+<form action="{% url 'save_comment' article.pk %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ comment_form.text }}
+    <button class="btn btn-dark btn-lg">Оставить комментарии</button>
+</form>
+{% else %}
+<h3>Чтобы оставить комментарий</h3>
+<a class="btn btn-dark" href="{% url 'login' %}">Войдите в аккаунт</a>
+{% endif %}

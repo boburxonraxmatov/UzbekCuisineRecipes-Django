@@ -1,0 +1,17 @@
+{% load blog_tags %}
+
+{% get_categories as categories %}
+
+<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+    <a href="{% url 'index' %}" style="margin-right:10px;color:black; text-decoration:none;font-size:16px; {% if 'Главная' in title %}border-bottom:1px solid black{% endif %};   text-transform:uppercase;" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1  " data-filter="*">
+        ВСЕ РЕЦЕПТЫ
+    </a>
+
+    {% for category in categories %}
+    |
+    <a href="{{ category.get_absolute_url }}" style="margin:0 10px;color:black; text-decoration:none;font-size:16px; {% if category.title in title %}border-bottom:1px solid black{% endif %};  text-transform:uppercase;" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {% if category.title in title %}{% endif %}" data-filter=".{{ category.title|lower }}">
+        {{ category.title }}
+    </a>
+
+    {% endfor %}
+</div>

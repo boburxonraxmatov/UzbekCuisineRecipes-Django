@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+</div>
+
+<div class="main mt-4">
+
+    <div class="container">
+
+        <div class="d-flex flex-column">
+            <div class="main-top d-flex justify-content-between mb-5 mt-5 align-items-center">
+                <h6 class="h4">{{ title }}</h6>
+                {% include 'blog/components/_sidebar.html' %}
+                {% include 'blog/components/_sort.html' %}
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-1 g-4">
+                {% for article in articles %}
+                {% include 'blog/components/_card.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}

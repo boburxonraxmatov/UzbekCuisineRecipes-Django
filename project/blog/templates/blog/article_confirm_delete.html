@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+        Вы действительно хотите удалить статью с названием "{{ article.title }}"?
+    </p>
+    <input type="submit" value="Да, удалить" class="btn-danger">
+    <a href="{{ article.get_absolute_url }}" class="btn btn-dark"> Назад</a>
+
+</form>
+</div>
+
+{% endblock main %}

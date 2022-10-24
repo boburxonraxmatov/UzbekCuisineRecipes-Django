@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+<div class="container">
+<div class="d-flex justify-content-center p-4">
+    <div class="col-6">
+        <div class="card">
+            <header>
+                <h3 class="text-center">{{ title }}</h3>
+            </header>
+            <div class="card-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% include 'components/_form_errors.html' %}
+                    <div class="form-floating flex-fill mb-4">
+                        {{ form.username }}
+                        <label for="{{ form.username.id_for_label }}" class="form-label">
+                            Имя пользователя
+                        </label>
+                    </div>
+                    <div class="form-floating flex-fill mb-4">
+                        {{ form.password }}
+                        <label for="{{ form.password.id_for_label }}" class="form-label">
+                            Пароль
+                        </label>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-dark">Войти</button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">
+                            Нет аккаунта?
+                            <a href="{% url 'register' %}" class="link-danger">Зарегестрироваться</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock main %}

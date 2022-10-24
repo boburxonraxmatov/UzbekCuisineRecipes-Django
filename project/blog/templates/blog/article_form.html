@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+<div class="container">
+<div class="d-flex justify-content-center mt-4">
+    <div class="card col-8">
+        <header>
+            {% if 'update' in request.path %}
+            <h2  class="text-center">Изменение статьи</h2>
+            {% else %}
+            <h2  class="text-center">{{ title }}</h2>
+            {% endif %}
+        </header>
+        <div class="card-body">
+            <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                {% include 'components/_form_errors.html' %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-dark">
+                {% if 'update' in request.path %}
+                Изменить статью
+                {% else %}
+                Добавить статью
+                {% endif %}
+            </button>
+
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock main %}

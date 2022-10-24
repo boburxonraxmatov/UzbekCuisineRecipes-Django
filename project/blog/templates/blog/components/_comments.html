@@ -1,0 +1,19 @@
+{% for comment in comments %}
+<div class="card mt-4">
+    <div class="card-body">
+        <div class="d-flex justify-content-start">
+            <div class="profile">
+                <img src="{{ comment.user.profile.get_photo }}" class="rounded-circle" width="80">
+                {% if request.user == comment.user %}
+                <a href="{% url 'delete_comment' comment.pk article.pk %}" class="btn btn-danger">❌</a>
+                {% endif %}
+            </div>
+            <div class="p-4">
+                <h3>{{ comment.user.username }}</h3>
+                <p>{{ comment.text }}</p>
+                <small>{{ comment.created_at }}</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
